@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>江南体育 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f3f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      padding: 24px 16px;
+    }
+
+    .page-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* header / hero 简洁入口感 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e9eef3;
+      padding: 36px 32px 32px 32px;
+      margin-bottom: 28px;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .hero-card:hover {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .hero-title {
+      font-size: 1.9rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #475569;
+      max-width: 680px;
+      margin-bottom: 18px;
+    }
+
+    .hero-tagline {
+      display: inline-block;
+      background: #f1f5f9;
+      border-radius: 40px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      color: #334155;
+      border: 1px solid #dce3ec;
+    }
+
+    /* 卡片网格 — 目录感布局 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    @media (min-width: 680px) {
+      .grid-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 960px) {
+      .grid-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.02);
+      padding: 24px 22px 22px 22px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      display: block;
+      color: #3b82f6;
+    }
+
+    .card h3 {
+      font-weight: 550;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    .card ul li {
+      margin-bottom: 4px;
+    }
+
+    .card .extra-note {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      background: #fafbfc;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border-left: 3px solid #94a3b8;
+      color: #475569;
+    }
+
+    /* 双列信息区 + 提示区 */
+    .info-panel {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    @media (min-width: 720px) {
+      .info-panel {
+        grid-template-columns: 3fr 2fr;
+      }
+    }
+
+    .info-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 24px 24px 26px 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .info-box h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #475569;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #edf2f7;
+      padding-bottom: 8px;
+    }
+
+    .info-box p {
+      margin-bottom: 12px;
+    }
+
+    .info-box a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #a0c0f0;
+    }
+
+    .info-box a:hover {
+      color: #1e40af;
+      border-bottom: 1px solid #2563eb;
+    }
+
+    .tip-box {
+      background: #f8fafc;
+      border: 1px solid #dce3ec;
+      border-radius: 20px;
+      padding: 24px 22px 26px 22px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .tip-box h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tip-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tip-box ul li {
+      padding: 8px 0 8px 28px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%236b7280" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM7.5 4.5a.5.5 0 0 1 1 0v5a.5.5 0 0 1-1 0v-5zm0 7a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0z"/></svg>') left center no-repeat;
+      background-size: 14px;
+      border-bottom: 1px solid #edf2f7;
+    }
+
+    .tip-box ul li:last-child {
+      border-bottom: none;
+    }
+
+    .faq-mini {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 24px 26px 28px 26px;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-mini h4 {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1e293b;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #edf2f7;
+      padding-bottom: 8px;
+    }
+
+    .faq-item {
+      margin-bottom: 14px;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 550;
+      color: #0f172a;
+      margin-bottom: 3px;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .faq-item a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px dotted #a0c0f0;
+    }
+
+    .faq-item a:hover {
+      border-bottom: 1px solid #2563eb;
+    }
+
+    .footnote {
+      font-size: 0.8rem;
+      color: #64748b;
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 24px;
+      margin-top: 10px;
+    }
+
+    .inline-link {
+      color: #2563eb;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px dotted #a0c0f0;
+    }
+
+    .inline-link:hover {
+      color: #1e40af;
+      border-bottom: 1px solid #2563eb;
+    }
+
+    .badge-light {
+      background: #eef2f6;
+      border-radius: 30px;
+      padding: 2px 12px;
+      font-size: 0.7rem;
+      color: #334155;
+      border: 1px solid #d1dbe8;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- hero 卡片 / 稳定入口说明 -->
+  <div class="hero-card">
+    <div class="hero-title">📖 知识库 · 目录入口</div>
+    <div class="hero-sub">
+      基于 <a href="https://webs-jnsport.com" class="inline-link">江南体育</a> 内容体系整理的常见信息索引，
+      帮助更快定位说明、场景与相关素材。页面内容持续更新，当前为稳定展示版。
+    </div>
+    <span class="hero-tagline">🧭 入口结构 · 说明 · 提示</span>
+  </div>
+
+  <!-- 卡片网格：目录感 -->
+  <div class="grid-cards">
+
+    <div class="card">
+      <span class="card-icon">📋</span>
+      <h3>平台说明</h3>
+      <p>围绕 <a href="https://webs-jnsport.com" class="inline-link">江南体育</a> 的基础信息与常规功能说明，适用于初次了解或需要核对细节的场景。</p>
+      <div class="extra-note">
+        ⚡ 说明内容由通用资料整理，具体以实际页面为准。
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🧩</span>
+      <h3>常见特点</h3>
+      <ul>
+        <li>内容模块相对清晰，分区明确</li>
+        <li>支持多类体育项目信息检索</li>
+        <li>界面风格趋于简洁实用</li>
+        <li>持续补充赛事与动态条目</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🌿</span>
+      <h3>适用场景</h3>
+      <p>查询体育动态、浏览赛事简讯、了解基础规则与背景。无论是日常关注还是临时需要核对信息，<a href="https://webs-jnsport.com" class="inline-link">江南体育</a> 都可以作为参考起点。</p>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">📌</span>
+      <h3>信息目录</h3>
+      <ul>
+        <li>赛事分类与时间概览</li>
+        <li>运动项目基础词条</li>
+        <li>常见名词与术语说明</li>
+        <li>相关链接与参考来源</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🔍</span>
+      <h3>快速定位</h3>
+      <p>如果对某个项目或赛事不太熟悉，可以先从首页分类入手。主页内通常设有栏目索引，按需浏览即可。</p>
+      <div class="extra-note">
+        📎 建议使用浏览器书签保存 <a href="https://webs-jnsport.com" class="inline-link">江南体育</a> 页面，方便日常回看。
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🧾</span>
+      <h3>相关参考</h3>
+      <p>部分运动规则、赛事历史、参与方式等内容可在平台内找到整理版本。遇到不确定的信息，可对照多来源核实。</p>
+    </div>
+  </div>
+
+  <!-- 双列：相关信息 + 提示区 -->
+  <div class="info-panel">
+
+    <div class="info-box">
+      <h4>📎 相关信息</h4>
+      <p>本页面作为 <a href="https://webs-jnsport.com" class="inline-link">江南体育</a> 的知识库式入口，集中展示说明、特点与常见索引。所有链接均指向同一主体，便于统一访问。</p>
+      <p>内容整理方向包括：体育项目分类、赛事简录、术语对照以及常规说明。页面结构以目录卡片为主，适合快速浏览和定位。</p>
+      <p style="margin-top: 8px; font-size: 0.9rem; background: #f1f5f9; padding: 8px 12px; border-radius: 12px;">
+        🏷️ 当前版本：信息页 · 入口风格
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <h4>💡 提示区</h4>
+      <ul>
+        <li>如遇到页面打开较慢，可以刷新或检查网络</li>
+        <li>部分内容可能随版本调整，请以实际显示为准</li>
+        <li>建议在桌面或平板设备浏览，体验更完整</li>
+        <li>若需要查找特定运动，可使用页面内搜索功能</li>
+      </ul>
+      <div style="margin-top: 14px; font-size: 0.85rem; color: #475569; background: #ffffff; border-radius: 12px; padding: 10px; border: 1px solid #e2e8f0;">
+        🔔 提示信息仅作参考，不代表平台官方公告。
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要区 -->
+  <div class="faq-mini">
+    <h4>❓ 常见问题摘要</h4>
+
+    <div class="faq-item">
+      <strong>如何快速找到某个运动项目的信息？</strong>
+      <p>可以进入 <a href="https://webs-jnsport.com" class="inline-link">江南体育</a> 主页面，根据导航栏或分类模块选择对应项目。部分项目附有简要说明页。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>页面上的信息是否实时更新？</strong>
+      <p>内容更新频率依板块而定，赛事类条目可能更常刷新。建议以页面实际标注时间为参考，或留意首页公告。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>是否可以通过一个链接访问所有内容？</strong>
+      <p><a href="https://webs-jnsport.com" class="inline-link">江南体育</a> 作为统一入口，大部分内容均可从该地址开始查找。不同栏目可能对应子页面或分区。</p>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footnote">
+    <span class="badge-light">知识库入口 · 目录感布局</span>
+    <span style="margin: 0 8px">·</span>
+    内容基于通用资料整理 · 仅供参考
+    <br>
+    <span style="opacity: 0.6;">页面生成于信息索引方向 · 非官方声明</span>
+  </div>
+
+</div>
+</body>
+</html>

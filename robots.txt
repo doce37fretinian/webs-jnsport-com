@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://doce37fretinian.github.io/webs-jnsport-com/sitemap.xml
